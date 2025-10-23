@@ -1,0 +1,42 @@
+class quiz:
+  def __init__(self,questions,options,answer):
+    self.questions=questions
+    self.options=options
+    self.answer=answer
+
+  def display(self):
+    print(f"{self.questions}")
+    for i,opt in enumerate(self.options,1):
+      print(f"{i}.{opt}")
+
+  def check_answer(self,user_choice):
+    if user_choice -1==self.answer:
+      return True
+    else:
+      return False
+
+q=quiz("what is the colour of jasmine",["blue","white","green","yellow"],1)
+r=quiz("what is the colour of apple",["red","blue","green","yellow"],0)
+s=quiz("what is the capital of india",["tamil nadu", "kerala", "newdelhi", "punjab"],2)
+t=quiz("which planet known as the red planet",["jupiter","venus","earth","mars"],3)
+u=quiz("what is the fastest land animal",["cheetah","lion","moneky","zebra"],0)
+questions_list = [q, r, s, t, u]
+score=0
+for question in questions_list:
+    question.display()
+    while True:
+        try:
+            user_choice = int(input("Enter your choice: "))
+            if 1 <= user_choice <= len(question.options):
+                break
+            else:
+                print("Invalid input. Please enter a number within the range of options.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+    if question.check_answer(user_choice):
+        print("Correct!")
+        score += 1
+    else:
+        print("Incorrect.")
+print("Quiz Over!")
+print(f"Your total score is: {score} / {len(questions_list)}")
