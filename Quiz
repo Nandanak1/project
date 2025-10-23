@@ -37,6 +37,6 @@ for question in questions_list:
         print("Correct!")
         score += 1
     else:
-        print("Incorrect.")
+        print("Incorrect...")
 print("Quiz Over!")
 print(f"Your total score is: {score} / {len(questions_list)}")
